@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>WhatsApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen w-full bg-cyan-700 overflow-hidden">
+
+<!-- Top Navbar -->
+<div class="flex justify-between items-center h-24 w-full px-6 bg-white shadow border-b border-gray-200">
+    <h1 class="text-4xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+        WhatsApp
+    </h1>
+    <div class="flex items-center gap-4">
+        {% if user.is_authenticated %}
+        <span class="text-black font-semibold">{{ user.username }}</span>
+        <a href="{% url 'user_logout' %}" class="text-blue-600 font-medium hover:underline">Logout</a>
+        {% else %}
+        <a href="{% url 'user_register' %}" class="text-blue-600 font-medium hover:underline">Sign up</a>
+        <a href="{% url 'user_login' %}" class="text-blue-600 font-medium hover:underline">Login</a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Main Content Area -->
+<div class="flex h-[calc(100vh-6rem)]">
+    <!-- Left Sidebar (Scrollable Rows) -->
+    <div class="w-2/5 bg-gray-100 overflow-y-auto p-3 space-y-3">
+        <!-- Add more rows to test scroll -->
+        {% for x in contacts %}
+        <div class="h-1/5 bg-white p-4 shadow rounded">{{x.name}}</div>
+        {% endfor %}
+    </div>
+
+    <!-- Right Content -->
+    <div class="w-3/5 bg-white p-4 overflow-auto shadow-xl flex flex-col justify-between">
+        <p class="text-gray-700">Main content goes here. You can add chat, messages, or profile view here.</p>
+        <div class="flex w-full">
+            <input type="text" class="text-red=600 h-10 border-2 rounded-full text-center w-4/5"
+                   placeholder="Enter here"/>
+            <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"/>
+                </svg>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

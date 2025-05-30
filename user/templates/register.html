@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Signup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen m-0 bg-[#f0f2f5]">
+<div class="w-full max-w-md p-5">
+    <h1 class="text-2xl font-bold mb-4 text-center">Create Account</h1>
+    <form method="post" class="bg-white p-8 rounded-lg shadow-lg space-y-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"
+                class="w-full py-3 bg-blue-600 text-white rounded-md font-bold hover:bg-blue-800 transition">
+            Signup
+        </button>
+    </form>
+</div>
+</body>
+</html>
