@@ -5,6 +5,7 @@ import json
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from .models import Contacts, Messages
+from datetime import datetime
 
 
 def Home(request):
